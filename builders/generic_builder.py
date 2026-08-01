@@ -1,0 +1,71 @@
+class GenericBuilder:
+
+    SCHEMA = []
+
+    CATEGORY = "Prompt Architect"
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("Data",)
+
+    FUNCTION = "build"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+
+        required = {}
+
+        for group in cls.SCHEMA:
+
+            for field in group["fields"]:
+
+                widget_name = f"{group['id']}_{field['id']}"
+
+                field_type = field["type"]
+
+                if field_type == "combo":
+
+                    required[widget_name] = (
+                        field["values"],
+                    )
+
+                elif field_type == "string":
+
+                    required[widget_name] = (
+                        "STRING",
+                        {
+                            "default": "",
+                            "multiline": False,
+                        },
+                    )
+
+                elif field_type == "multiline":
+
+                    required[widget_name] = (
+                        "STRING",
+                        {
+                            "default": "",
+                            "multiline": True,
+                        },
+                    )
+
+        return {
+            "required": required
+        }
+
+    def build(self, **kwargs):
+
+        data = {}
+
+        for group in self.SCHEMA:
+
+            group_id = group["id"]
+
+            data[group_id] = {}
+
+            for field in group["fields"]:
+
+                widget_name = f"{group_id}_{field['id']}"
+
+                data[group_id][field["id"]] = kwargs[widget_name]
+
+        return (str(data),)
