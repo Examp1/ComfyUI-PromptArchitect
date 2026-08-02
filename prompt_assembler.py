@@ -19,8 +19,8 @@ class PromptAssembler:
             },
 
             "optional": {
+                "appearance": ("STRING",),
                 "pose": ("STRING",),
-                "clothing": ("STRING",),
                 "scene": ("STRING",),
                 "camera": ("STRING",),
                 "quality": ("STRING",),
@@ -30,8 +30,8 @@ class PromptAssembler:
     def assemble(
         self,
         character,
+        appearance=None,
         pose=None,
-        clothing=None,
         scene=None,
         camera=None,
         quality=None,
@@ -39,8 +39,8 @@ class PromptAssembler:
 
         prompt = GenericPrompt().assemble(
             character=character,
+            appearance=appearance,
             pose=pose,
-            clothing=clothing,
             scene=scene,
             camera=camera,
             quality=quality,

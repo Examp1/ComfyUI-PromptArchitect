@@ -1,4 +1,7 @@
+
 class CharacterPrompt:
+
+    NAME = "character"
 
     def build(self, data):
 
@@ -10,7 +13,6 @@ class CharacterPrompt:
         result += self.face(data)
         result += self.hair(data)
         result += self.body(data)
-        result += self.makeup(data)
 
         return result
 
@@ -48,18 +50,16 @@ class CharacterPrompt:
         tone = skin.get("tone")
         texture = skin.get("texture")
 
-        text = ""
+        parts = []
 
         if tone:
-            text += tone
+            parts.append(tone)
 
         if texture:
-            if text:
-                text += " "
-            text += texture
+            parts.append(texture)
 
-        if text:
-            result.append(f"{text} skin")
+        if parts:
+            result.append(" ".join(parts) + " skin")
 
         return result
 
@@ -81,7 +81,7 @@ class CharacterPrompt:
             result.append(f"{color} eyes")
 
         if shape:
-            result.append(f"{shape}-shaped eyes")
+            result.append(f"{shape} eyes")
 
         if lashes:
             result.append(f"{lashes} eyelashes")
@@ -116,8 +116,8 @@ class CharacterPrompt:
             result.append(f"{lips} lips")
 
         return result
-    
-        # -------------------------------------------------
+
+    # -------------------------------------------------
     # HAIR
     # -------------------------------------------------
 
@@ -128,22 +128,9 @@ class CharacterPrompt:
         hair = data.get("hair", {})
 
         color = hair.get("color")
-        length = hair.get("length")
-        style = hair.get("style")
-
-        hair_parts = []
-
-        if length:
-            hair_parts.append(length)
 
         if color:
-            hair_parts.append(color)
-
-        if hair_parts:
-            result.append(" ".join(hair_parts) + " hair")
-
-        if style:
-            result.append(style)
+            result.append(f"{color} hair")
 
         return result
 
@@ -168,23 +155,6 @@ class CharacterPrompt:
             result.append(f"{figure} figure")
 
         if breasts:
-            result.append(f"{breasts} breasts")
-
-        return result
-
-    # -------------------------------------------------
-    # MAKEUP
-    # -------------------------------------------------
-
-    def makeup(self, data):
-
-        result = []
-
-        makeup = data.get("makeup", {})
-
-        style = makeup.get("style")
-
-        if style and style != "none":
-            result.append(f"{style} makeup")
+            result.append(breasts)
 
         return result

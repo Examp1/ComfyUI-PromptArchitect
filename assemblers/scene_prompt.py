@@ -1,7 +1,4 @@
-from .base import PromptModule
-
-
-class ScenePrompt(PromptModule):
+class ScenePrompt:
 
     NAME = "scene"
 
