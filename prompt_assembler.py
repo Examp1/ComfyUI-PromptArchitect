@@ -1,5 +1,4 @@
 from .assemblers.generic_prompt import GenericPrompt
-from .schemas.character import SCHEMA
 
 
 class PromptAssembler:
@@ -15,19 +14,13 @@ class PromptAssembler:
     def INPUT_TYPES(cls):
 
         return {
-
             "required": {
-
                 "character": ("STRING",)
-
             }
-
         }
 
     def assemble(self, character):
 
-        assembler = GenericPrompt(SCHEMA)
+        prompt = GenericPrompt().assemble(character)
 
-        return (
-            assembler.assemble(character),
-        )
+        return (prompt,)

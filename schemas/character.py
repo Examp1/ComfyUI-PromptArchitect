@@ -1,6 +1,8 @@
 SCHEMA = [
 
-# ---------------- BASIC ----------------
+# ==========================================================
+# BASIC
+# ==========================================================
 
 {
     "id": "basic",
@@ -12,7 +14,6 @@ SCHEMA = [
             "id": "gender",
             "label": "Gender",
             "type": "combo",
-
             "values": [
                 "woman",
                 "man"
@@ -22,9 +23,7 @@ SCHEMA = [
         {
             "id": "age",
             "label": "Age",
-
             "type": "combo",
-
             "values": [
                 "18-20",
                 "20-22",
@@ -37,7 +36,9 @@ SCHEMA = [
     ]
 },
 
-# ---------------- SKIN ----------------
+# ==========================================================
+# SKIN
+# ==========================================================
 
 {
     "id": "skin",
@@ -47,10 +48,8 @@ SCHEMA = [
 
         {
             "id": "tone",
-            "label": "Skin Tone",
-
+            "label": "Tone",
             "type": "combo",
-
             "values": [
                 "fair",
                 "light",
@@ -61,10 +60,8 @@ SCHEMA = [
 
         {
             "id": "texture",
-            "label": "Skin Texture",
-
+            "label": "Texture",
             "type": "combo",
-
             "values": [
                 "clear",
                 "smooth",
@@ -76,67 +73,9 @@ SCHEMA = [
     ]
 },
 
-# ---------------- HAIR ----------------
-
-{
-    "id": "hair",
-    "label": "Hair",
-
-    "fields": [
-
-        {
-            "id": "color",
-            "label": "Hair Color",
-
-            "type": "combo",
-
-            "values": [
-                "black",
-                "brown",
-                "blonde",
-                "copper red",
-                "auburn",
-                "pink",
-                "white"
-            ]
-        },
-
-        {
-            "id": "length",
-            "label": "Hair Length",
-
-            "type": "combo",
-
-            "values": [
-                "short",
-                "medium",
-                "long",
-                "very long"
-            ]
-        },
-
-        {
-            "id": "style",
-            "label": "Hair Style",
-
-            "type": "combo",
-
-            "values": [
-                "messy bun",
-                "bun",
-                "ponytail",
-                "braid",
-                "twintails",
-                "loose hair",
-                "bob cut",
-                "pixie cut"
-            ]
-        }
-
-    ]
-},
-
-# ---------------- EYES ----------------
+# ==========================================================
+# EYES
+# ==========================================================
 
 {
     "id": "eyes",
@@ -146,10 +85,8 @@ SCHEMA = [
 
         {
             "id": "color",
-            "label": "Eye Color",
-
+            "label": "Color",
             "type": "combo",
-
             "values": [
                 "emerald green",
                 "green",
@@ -162,10 +99,8 @@ SCHEMA = [
 
         {
             "id": "shape",
-            "label": "Eye Shape",
-
+            "label": "Shape",
             "type": "combo",
-
             "values": [
                 "round",
                 "almond",
@@ -175,10 +110,8 @@ SCHEMA = [
 
         {
             "id": "lashes",
-            "label": "Eyelashes",
-
+            "label": "Lashes",
             "type": "combo",
-
             "values": [
                 "short",
                 "natural",
@@ -191,7 +124,9 @@ SCHEMA = [
     ]
 },
 
-# ---------------- FACE ----------------
+# ==========================================================
+# FACE
+# ==========================================================
 
 {
     "id": "face",
@@ -201,10 +136,8 @@ SCHEMA = [
 
         {
             "id": "shape",
-            "label": "Face Shape",
-
+            "label": "Shape",
             "type": "combo",
-
             "values": [
                 "oval",
                 "round",
@@ -215,9 +148,7 @@ SCHEMA = [
         {
             "id": "jaw",
             "label": "Jawline",
-
             "type": "combo",
-
             "values": [
                 "soft",
                 "defined",
@@ -227,11 +158,8 @@ SCHEMA = [
 
         {
             "id": "nose",
-
             "label": "Nose",
-
             "type": "combo",
-
             "values": [
                 "small straight",
                 "button",
@@ -241,11 +169,8 @@ SCHEMA = [
 
         {
             "id": "lips",
-
             "label": "Lips",
-
             "type": "combo",
-
             "values": [
                 "thin",
                 "natural",
@@ -257,7 +182,65 @@ SCHEMA = [
     ]
 },
 
-# ---------------- BODY ----------------
+# ==========================================================
+# HAIR
+# ==========================================================
+
+{
+    "id": "hair",
+    "label": "Hair",
+
+    "fields": [
+
+        {
+            "id": "color",
+            "label": "Color",
+            "type": "combo",
+            "values": [
+                "black",
+                "brown",
+                "blonde",
+                "copper red",
+                "auburn",
+                "white",
+                "pink"
+            ]
+        },
+
+        {
+            "id": "length",
+            "label": "Length",
+            "type": "combo",
+            "values": [
+                "short",
+                "medium",
+                "long",
+                "very long"
+            ]
+        },
+
+        {
+            "id": "style",
+            "label": "Style",
+            "type": "combo",
+            "values": [
+                "loose hair",
+                "messy bun",
+                "bun",
+                "ponytail",
+                "braid",
+                "twintails",
+                "bob cut",
+                "pixie cut"
+            ]
+        }
+
+    ]
+},
+
+# ==========================================================
+# BODY
+# ==========================================================
 
 {
     "id": "body",
@@ -267,11 +250,8 @@ SCHEMA = [
 
         {
             "id": "physique",
-
             "label": "Physique",
-
             "type": "combo",
-
             "values": [
                 "petite",
                 "slim feminine",
@@ -282,11 +262,8 @@ SCHEMA = [
 
         {
             "id": "figure",
-
             "label": "Figure",
-
             "type": "combo",
-
             "values": [
                 "hourglass",
                 "pear",
@@ -296,11 +273,8 @@ SCHEMA = [
 
         {
             "id": "breasts",
-
-            "label": "Breast Size",
-
+            "label": "Breasts",
             "type": "combo",
-
             "values": [
                 "small",
                 "medium",
@@ -312,7 +286,9 @@ SCHEMA = [
     ]
 },
 
-# ---------------- MAKEUP ----------------
+# ==========================================================
+# MAKEUP
+# ==========================================================
 
 {
     "id": "makeup",
@@ -322,11 +298,8 @@ SCHEMA = [
 
         {
             "id": "style",
-
             "label": "Style",
-
             "type": "combo",
-
             "values": [
                 "none",
                 "light",
