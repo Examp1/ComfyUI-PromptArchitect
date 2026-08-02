@@ -11,20 +11,6 @@ SCHEMA = [
     "fields": [
 
         {
-            "id": "length",
-            "label": "Length",
-            "type": "combo",
-            "values": [
-
-                "short",
-                "medium",
-                "long",
-                "very long"
-
-            ]
-        },
-
-        {
             "id": "style",
             "label": "Style",
             "type": "combo",

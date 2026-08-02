@@ -5,5 +5,5 @@ from .appearance_prompt import AppearancePrompt
 ASSEMBLERS = {
     "character": CharacterPrompt(),
     "scene": ScenePrompt(),
-    "scene": AppearancePrompt(),
+    "appearance": AppearancePrompt(),
 }

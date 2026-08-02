@@ -63,7 +63,7 @@ class ScenePrompt:
         time = scene.get("time")
 
         if time:
-            result.append(time)
+            result.append(f"at {time}")
 
         return result
 
@@ -80,7 +80,7 @@ class ScenePrompt:
         weather = scene.get("weather")
 
         if weather:
-            result.append(weather)
+            result.append(f"{weather} weather")
 
         return result
 
@@ -97,7 +97,7 @@ class ScenePrompt:
         atmosphere = scene.get("atmosphere")
 
         if atmosphere:
-            result.append(atmosphere)
+            result.append(f"{atmosphere} atmosphere")
 
         return result
 
