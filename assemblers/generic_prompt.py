@@ -1,17 +1,24 @@
 import ast
 
-from .character_prompt import CharacterPrompt
+from . import ASSEMBLERS
 
 
 class GenericPrompt:
 
-    def assemble(self, character):
-
-        if isinstance(character, str):
-            character = ast.literal_eval(character)
+    def assemble(self, **kwargs):
 
         prompt = []
 
-        prompt += CharacterPrompt().build(character)
+        for name, assembler in ASSEMBLERS.items():
+
+            data = kwargs.get(name)
+
+            if not data:
+                continue
+
+            if isinstance(data, str):
+                data = ast.literal_eval(data)
+
+            prompt += assembler.build(data)
 
         return ",\n".join(prompt)
