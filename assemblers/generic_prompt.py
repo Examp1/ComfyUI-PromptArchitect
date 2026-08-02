@@ -7,9 +7,23 @@ class GenericPrompt:
 
     def assemble(self, **kwargs):
 
-        prompt = []
+        sections = []
 
-        for name, assembler in ASSEMBLERS.items():
+        order = [
+
+            "character",
+            "appearance",
+            "scene",
+            "camera",
+
+        ]
+
+        for name in order:
+
+            assembler = ASSEMBLERS.get(name)
+
+            if assembler is None:
+                continue
 
             data = kwargs.get(name)
 
@@ -19,6 +33,10 @@ class GenericPrompt:
             if isinstance(data, str):
                 data = ast.literal_eval(data)
 
-            prompt += assembler.build(data)
+            block = assembler.build(data)
 
-        return ",\n".join(prompt)
+            if block:
+
+                sections.append(",\n".join(block))
+
+        return "\n\n".join(sections)

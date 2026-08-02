@@ -6,33 +6,46 @@ class CameraPrompt:
 
         result = []
 
-        result += self.lens(data)
+        result += self.style(data)
         result += self.shot(data)
         result += self.angle(data)
         result += self.composition(data)
+        result += self.lens(data)
         result += self.focus(data)
-        result += self.style(data)
 
         return result
 
     # -------------------------------------------------
-    # LENS
+    # STYLE
     # -------------------------------------------------
 
-    def lens(self, data):
+    def style(self, data):
 
         result = []
 
-        lens = data.get("lens", {})
+        style = data.get("style", {})
 
-        focal = lens.get("focal_length")
-        aperture = lens.get("aperture")
+        value = style.get("photo_style")
 
-        if focal:
-            result.append(f"{focal} lens")
+        mapping = {
 
-        if aperture:
-            result.append(aperture)
+            "photograph": "portrait photograph",
+
+            "portrait photography": "portrait photography",
+
+            "fashion photography": "fashion fashion editorial",
+
+            "editorial photography": "editorial fashion photography",
+
+            "studio photography": "professional studio photograph",
+
+            "cinematic still": "cinematic still",
+
+        }
+
+        if value:
+
+            result.append(mapping.get(value, value))
 
         return result
 
@@ -48,8 +61,29 @@ class CameraPrompt:
 
         framing = shot.get("framing")
 
+        mapping = {
+
+            "extreme close-up": "extreme close-up shot",
+
+            "close-up": "close-up portrait",
+
+            "headshot": "headshot portrait",
+
+            "portrait": "portrait",
+
+            "upper body": "upper body shot",
+
+            "half body": "half body shot",
+
+            "three quarter body": "three-quarter body shot",
+
+            "full body": "full body shot",
+
+        }
+
         if framing:
-            result.append(framing)
+
+            result.append(mapping.get(framing, framing))
 
         return result
 
@@ -65,8 +99,25 @@ class CameraPrompt:
 
         camera_angle = angle.get("camera_angle")
 
+        mapping = {
+
+            "eye level": "eye-level camera angle",
+
+            "slightly above": "slightly elevated camera angle",
+
+            "high angle": "high-angle shot",
+
+            "low angle": "low-angle shot",
+
+            "bird's eye view": "bird's-eye view",
+
+            "worm's eye view": "worm's-eye view",
+
+        }
+
         if camera_angle:
-            result.append(camera_angle)
+
+            result.append(mapping.get(camera_angle, camera_angle))
 
         return result
 
@@ -83,7 +134,32 @@ class CameraPrompt:
         value = composition.get("composition")
 
         if value:
+
             result.append(value)
+
+        return result
+
+    # -------------------------------------------------
+    # LENS
+    # -------------------------------------------------
+
+    def lens(self, data):
+
+        result = []
+
+        lens = data.get("lens", {})
+
+        focal = lens.get("focal_length")
+
+        aperture = lens.get("aperture")
+
+        if focal:
+
+            result.append(f"shot on a {focal} lens")
+
+        if aperture:
+
+            result.append(f"{aperture} aperture")
 
         return result
 
@@ -100,23 +176,7 @@ class CameraPrompt:
         value = focus.get("focus")
 
         if value:
-            result.append(value)
 
-        return result
-
-    # -------------------------------------------------
-    # STYLE
-    # -------------------------------------------------
-
-    def style(self, data):
-
-        result = []
-
-        style = data.get("style", {})
-
-        value = style.get("photo_style")
-
-        if value:
             result.append(value)
 
         return result

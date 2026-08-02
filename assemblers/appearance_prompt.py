@@ -25,19 +25,11 @@ class AppearancePrompt:
 
         hair = data.get("hair", {})
 
-        length = hair.get("length")
         style = hair.get("style")
 
-        hair_parts = []
-
-        if length:
-            hair_parts.append(length)
-
-        if hair_parts:
-            result.append(" ".join(hair_parts) + " hair")
-
         if style:
-            result.append(style)
+
+            result.append(f"{style} hairstyle")
 
         return result
 
@@ -54,7 +46,8 @@ class AppearancePrompt:
         outfit = clothing.get("outfit")
 
         if outfit:
-            result.append(outfit)
+
+            result.append(f"wearing {outfit}")
 
         return result
 
@@ -71,7 +64,8 @@ class AppearancePrompt:
         items = accessories.get("items")
 
         if items:
-            result.append(items)
+
+            result.append(f"wearing {items}")
 
         return result
 
@@ -88,6 +82,7 @@ class AppearancePrompt:
         style = makeup.get("style")
 
         if style and style != "none":
+
             result.append(f"{style} makeup")
 
         return result
@@ -105,7 +100,10 @@ class AppearancePrompt:
         style = nails.get("style")
 
         if style:
-            result.append(style)
+
+            style = style.strip()
+
+            result.append(f"{style} nail polish")
 
         return result
 
@@ -122,6 +120,7 @@ class AppearancePrompt:
         details = body.get("details")
 
         if details:
+
             result.append(details)
 
         return result
