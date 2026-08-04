@@ -5,9 +5,7 @@ from .builders.appearance_builder import AppearanceBuilder
 from .builders.camera_builder import CameraBuilder
 from .builders.pose_builder import PoseBuilder
 from .dataset.dataset_generator import DatasetGenerator
-# 
-from .core.debug_prompt_data_producer import DebugPromptDataProducer
-from .core.debug_prompt_data_consumer import DebugPromptDataConsumer
+
 
 NODE_CLASS_MAPPINGS = {
 
@@ -18,8 +16,6 @@ NODE_CLASS_MAPPINGS = {
     "CameraBuilder": CameraBuilder,
     "PoseBuilder": PoseBuilder,
     "DatasetGenerator": DatasetGenerator,
-     "DebugPromptDataProducer": DebugPromptDataProducer,
-    "DebugPromptDataConsumer": DebugPromptDataConsumer,
 
 }
 

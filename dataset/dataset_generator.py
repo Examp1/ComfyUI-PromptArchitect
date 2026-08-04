@@ -1,4 +1,6 @@
-from .data_manipulator import DataManipulator
+from ..core.prompt_data import PromptData
+
+
 class DatasetGenerator:
 
     CATEGORY = "Prompt Architect"
@@ -28,11 +30,17 @@ class DatasetGenerator:
 
         return {
             "required": {
+
                 "character": ("STRING",),
+
                 "appearance": ("STRING",),
+
                 "pose": ("STRING",),
+
                 "scene": ("STRING",),
+
                 "camera": ("STRING",),
+
                 "variation_fields": (
                     "STRING",
                     {
@@ -44,37 +52,47 @@ class DatasetGenerator:
                         ),
                     },
                 ),
+
             }
         }
 
+    # -------------------------------------------------
+
     def generate(
+
         self,
+
         character,
         appearance,
         pose,
         scene,
         camera,
         variation_fields,
-    ):
-        m = DataManipulator()
 
-        print("\n====== BEFORE ======")
+    ):
+
+        character = PromptData(character)
+        appearance = PromptData(appearance)
+        pose = PromptData(pose)
+        scene = PromptData(scene)
+        camera = PromptData(camera)
+
+        print("\n========== BEFORE ==========\n")
         print(pose)
 
-        m.set(
-            pose,
+        pose.set(
             "body.position",
-            "kneeling"
+            "kneeling",
         )
 
-        print("\n====== AFTER ======")
+        print("\n========== AFTER ==========\n")
         print(pose)
-        
+
         return (
-            character,
-            appearance,
-            pose,
-            scene,
-            camera,
+            character.serialize(),
+            appearance.serialize(),
+            pose.serialize(),
+            scene.serialize(),
+            camera.serialize(),
             variation_fields,
         )

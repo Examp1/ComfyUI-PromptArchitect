@@ -9,16 +9,33 @@ class GenericBuilder:
 
     FUNCTION = "build"
 
+    # -------------------------------------------------
+    # Extension points
+    # -------------------------------------------------
+
+    EXTRA_INPUTS = {}
+
+    # -------------------------------------------------
+
     @classmethod
     def INPUT_TYPES(cls):
 
         required = {}
 
+        # ==========================================================
+        # EXTRA INPUTS
+        # ==========================================================
+
+        required.update(cls.EXTRA_INPUTS)
+
+        # ==========================================================
+        # SCHEMA
+        # ==========================================================
+
         for group in cls.SCHEMA:
 
             group_prefix = group["id"]
 
-            # чтобы было eye_color вместо eyes_color
             if group_prefix == "eyes":
                 group_prefix = "eye"
 
@@ -28,11 +45,15 @@ class GenericBuilder:
 
                 field_type = field["type"]
 
+                # ----------------------------------------------
+
                 if field_type == "combo":
 
                     required[widget_name] = (
                         field["values"],
                     )
+
+                # ----------------------------------------------
 
                 elif field_type == "string":
 
@@ -43,6 +64,8 @@ class GenericBuilder:
                             "multiline": False,
                         },
                     )
+
+                # ----------------------------------------------
 
                 elif field_type == "multiline":
 
@@ -55,12 +78,18 @@ class GenericBuilder:
                     )
 
         return {
+
             "required": required
+
         }
+
+    # -------------------------------------------------
 
     def build(self, **kwargs):
 
         data = {}
+
+        # ==========================================================
 
         for group in self.SCHEMA:
 
@@ -79,4 +108,40 @@ class GenericBuilder:
 
                 data[group_id][field["id"]] = kwargs[widget_name]
 
-        return (str(data),)
+        # ==========================================================
+        # Allow child builders to modify output
+        # ==========================================================
+
+        self.after_build(
+
+            data,
+
+            kwargs,
+
+        )
+
+        return (
+
+            str(data),
+
+        )
+
+    # -------------------------------------------------
+
+    def after_build(
+
+        self,
+
+        data,
+
+        kwargs,
+
+    ):
+
+        """
+        Override in child builders.
+
+        Modify `data` before it is returned.
+        """
+
+        pass
