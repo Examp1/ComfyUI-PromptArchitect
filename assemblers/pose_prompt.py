@@ -3,11 +3,14 @@ from .prompt_module import PromptModule
 
 class PosePrompt(PromptModule):
 
-    NAME = "character"
+    NAME = "pose"
 
     RULES = {
 
         "body.position":
+            "{value}",
+
+        "legs.position":
             "{value}",
 
         "head.position":
@@ -16,13 +19,10 @@ class PosePrompt(PromptModule):
         "eyes.direction":
             "{value}",
 
-        "expression.type":
-            "{value}",
-
         "arms.position":
             "{value}",
 
-        "legs.position":
+        "expression.type":
             "{value}",
 
         "interaction.action":

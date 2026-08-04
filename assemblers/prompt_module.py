@@ -45,18 +45,52 @@ class PromptModule:
 
     def render(self, rule, value):
 
+        # ---------- normalize strings ----------
+
+        if isinstance(value, str):
+
+            value = value.strip()
+
+            if not value:
+                return None
+
+            if value.lower() in (
+                "none",
+                "null",
+            ):
+                return None
+
+        # ---------- callable ----------
+
         if callable(rule):
 
             text = rule(value)
 
-            return text if text else None
+            if not text:
+                return None
+
+            text = text.strip()
+
+            if not text:
+                return None
+
+            return text
+
+        # ---------- dict ----------
 
         if isinstance(rule, dict):
 
             return rule.get(value)
 
+        # ---------- string template ----------
+
         if isinstance(value, str):
 
-            return rule.format(value=value)
+            text = rule.format(value=value).strip()
+
+            if not text:
+                return None
+
+            return text
 
         return None

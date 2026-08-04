@@ -7,19 +7,15 @@ class CameraPrompt(PromptModule):
 
     RULES = {
 
-        # -------------------------------------------------
-        # STYLE
-        # -------------------------------------------------
-
         "style.photo_style": {
 
-            "photograph": "photograph",
+            "photograph": "professional photograph",
 
-            "portrait photography": "portrait photograph",
+            "portrait photography": "professional portrait photograph",
 
             "fashion photography": "fashion editorial photograph",
 
-            "beauty photography": "beauty photograph",
+            "beauty photography": "professional beauty photograph",
 
             "editorial photography": "editorial fashion photograph",
 
@@ -33,9 +29,6 @@ class CameraPrompt(PromptModule):
 
         },
 
-        # -------------------------------------------------
-        # CAMERA DISTANCE
-        # -------------------------------------------------
 
         "distance.shot": {
 
@@ -59,9 +52,6 @@ class CameraPrompt(PromptModule):
 
         },
 
-        # -------------------------------------------------
-        # SUBJECT
-        # -------------------------------------------------
 
         "subject.position": {
 
@@ -77,9 +67,6 @@ class CameraPrompt(PromptModule):
 
         },
 
-        # -------------------------------------------------
-        # CAMERA ANGLE
-        # -------------------------------------------------
 
         "angle.camera_angle": {
 
@@ -101,24 +88,16 @@ class CameraPrompt(PromptModule):
 
         },
 
-        # -------------------------------------------------
-        # COMPOSITION
-        # -------------------------------------------------
+        "composition.composition":
+            "{value}",
 
-        "composition.composition": "{value}",
+        "lens.focal_length":
+            "shot on a {value} lens",
 
-        # -------------------------------------------------
-        # LENS
-        # -------------------------------------------------
-
-        "lens.focal_length": "shot on a {value} lens",
-
-        "lens.aperture": "{value} aperture",
-
-        # -------------------------------------------------
-        # FOCUS
-        # -------------------------------------------------
-
-        "focus.focus": "{value}",
+        "lens.aperture":
+            "{value} aperture",
+            
+        "focus.focus":
+            "{value}",
 
     }
