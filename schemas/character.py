@@ -130,13 +130,13 @@ SCHEMA = [
                 "label": "Breasts",
                 "type": "combo",
                 "values": [
-                    "flat chest",  # практически отсутствует
-                    "small breasts",  # A
-                    "medium breasts",  # B
-                    "full breasts",  # C
-                    "large breasts",  # D
-                    "very large breasts",  # DD / E
-                    "huge breasts",  # F+
+                    "flat chest",
+                    "small breasts",  
+                    "medium breasts", 
+                    "full breasts",  
+                    "large breasts",  
+                    "very large breasts", 
+                    "huge breasts", 
                 ],
             },
         ],
