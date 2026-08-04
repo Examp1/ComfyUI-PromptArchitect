@@ -1,5 +1,4 @@
-from .schema_index import SchemaIndex
-
+from .data_manipulator import DataManipulator
 class DatasetGenerator:
 
     CATEGORY = "Prompt Architect"
@@ -57,18 +56,20 @@ class DatasetGenerator:
         camera,
         variation_fields,
     ):
-        index = SchemaIndex()
+        m = DataManipulator()
 
-        print("\n========== INDEX ==========\n")
+        print("\n====== BEFORE ======")
+        print(pose)
 
-        for key, value in index.items():
+        m.set(
+            pose,
+            "body.position",
+            "kneeling"
+        )
 
-            print(key)
-            print(value)
-            print()
-
-        print("\n===========================\n")
-
+        print("\n====== AFTER ======")
+        print(pose)
+        
         return (
             character,
             appearance,

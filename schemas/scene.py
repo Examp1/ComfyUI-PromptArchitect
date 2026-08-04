@@ -15,7 +15,7 @@ SCHEMA = [
             "label": "Location",
             "type": "combo",
             "values": [
-
+                
                 "studio",
                 "bedroom",
                 "living room",
