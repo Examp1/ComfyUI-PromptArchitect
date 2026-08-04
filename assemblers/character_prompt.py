@@ -1,160 +1,52 @@
+from .prompt_module import PromptModule
 
-class CharacterPrompt:
+
+class CharacterPrompt(PromptModule):
 
     NAME = "character"
 
-    def build(self, data):
+    RULES = {
 
-        result = []
+        "basic.gender":
+            "young {value}",
 
-        result += self.basic(data)
-        result += self.skin(data)
-        result += self.eyes(data)
-        result += self.face(data)
-        result += self.hair(data)
-        result += self.body(data)
+        "basic.age":
+            "{value} years old",
 
-        return result
+        "skin":
+            lambda x: f"{x['tone']} {x['texture']} skin",
 
-    # -------------------------------------------------
-    # BASIC
-    # -------------------------------------------------
+        "eyes.color":
+            "{value} eyes",
 
-    def basic(self, data):
+        "eyes.shape":
+            "{value} eyes",
 
-        result = []
+        "eyes.lashes":
+            "{value} eyelashes",
 
-        basic = data.get("basic", {})
+        "face.shape":
+            "soft {value} face",
 
-        gender = basic.get("gender")
-        age = basic.get("age")
+        "face.jaw":
+            "{value} jawline",
 
-        if gender:
-            result.append(f"young {gender}")
+        "face.nose":
+            "{value} nose",
 
-        if age:
-            result.append(f"{age} years old")
+        "face.lips":
+            "{value} lips",
 
-        return result
+        "hair.color":
+            "{value} hair",
 
-    # -------------------------------------------------
-    # SKIN
-    # -------------------------------------------------
+        "body.physique":
+            "{value} physique",
 
-    def skin(self, data):
+        "body.figure":
+            "{value} figure",
 
-        result = []
+        "body.breasts":
+            "{value}",
 
-        skin = data.get("skin", {})
-
-        tone = skin.get("tone")
-        texture = skin.get("texture")
-
-        parts = []
-
-        if tone:
-            parts.append(tone)
-
-        if texture:
-            parts.append(texture)
-
-        if parts:
-            result.append(" ".join(parts) + " skin")
-
-        return result
-
-    # -------------------------------------------------
-    # EYES
-    # -------------------------------------------------
-
-    def eyes(self, data):
-
-        result = []
-
-        eyes = data.get("eyes", {})
-
-        color = eyes.get("color")
-        shape = eyes.get("shape")
-        lashes = eyes.get("lashes")
-
-        if color:
-            result.append(f"{color} eyes")
-
-        if shape:
-            result.append(f"{shape} eyes")
-
-        if lashes:
-            result.append(f"{lashes} eyelashes")
-
-        return result
-
-    # -------------------------------------------------
-    # FACE
-    # -------------------------------------------------
-
-    def face(self, data):
-
-        result = []
-
-        face = data.get("face", {})
-
-        shape = face.get("shape")
-        jaw = face.get("jaw")
-        nose = face.get("nose")
-        lips = face.get("lips")
-
-        if shape:
-            result.append(f"soft {shape} face")
-
-        if jaw:
-            result.append(f"{jaw} jawline")
-
-        if nose:
-            result.append(f"{nose} nose")
-
-        if lips:
-            result.append(f"{lips} lips")
-
-        return result
-
-    # -------------------------------------------------
-    # HAIR
-    # -------------------------------------------------
-
-    def hair(self, data):
-
-        result = []
-
-        hair = data.get("hair", {})
-
-        color = hair.get("color")
-
-        if color:
-            result.append(f"{color} hair")
-
-        return result
-
-    # -------------------------------------------------
-    # BODY
-    # -------------------------------------------------
-
-    def body(self, data):
-
-        result = []
-
-        body = data.get("body", {})
-
-        physique = body.get("physique")
-        figure = body.get("figure")
-        breasts = body.get("breasts")
-
-        if physique:
-            result.append(f"{physique} physique")
-
-        if figure:
-            result.append(f"{figure} figure")
-
-        if breasts:
-            result.append(breasts)
-
-        return result
+    }

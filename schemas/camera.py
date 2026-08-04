@@ -21,7 +21,8 @@ SCHEMA = [
                 "50mm",
                 "85mm",
                 "105mm",
-                "135mm"
+                "135mm",
+                "200mm"
 
             ]
         },
@@ -37,7 +38,9 @@ SCHEMA = [
                 "f/1.8",
                 "f/2",
                 "f/2.8",
-                "f/4"
+                "f/4",
+                "f/5.6",
+                "f/8"
 
             ]
         }
@@ -46,18 +49,18 @@ SCHEMA = [
 },
 
 # ==========================================================
-# SHOT
+# CAMERA DISTANCE
 # ==========================================================
 
 {
-    "id": "shot",
-    "label": "Shot",
+    "id": "distance",
+    "label": "Camera Distance",
 
     "fields": [
 
         {
-            "id": "framing",
-            "label": "Framing",
+            "id": "shot",
+            "label": "Shot",
             "type": "combo",
             "values": [
 
@@ -65,10 +68,11 @@ SCHEMA = [
                 "close-up",
                 "headshot",
                 "portrait",
-                "upper body",
-                "half body",
-                "three quarter body",
-                "full body"
+                "medium shot",
+                "cowboy shot",
+                "three-quarter shot",
+                "full body shot",
+                "long shot"
 
             ]
         }
@@ -77,18 +81,46 @@ SCHEMA = [
 },
 
 # ==========================================================
-# ANGLE
+# SUBJECT
+# ==========================================================
+
+{
+    "id": "subject",
+    "label": "Subject",
+
+    "fields": [
+
+        {
+            "id": "position",
+            "label": "Position",
+            "type": "combo",
+            "values": [
+
+                "centered",
+                "close to camera",
+                "far from camera",
+                "occupying most of the frame",
+                "small subject"
+
+            ]
+        }
+
+    ]
+},
+
+# ==========================================================
+# CAMERA ANGLE
 # ==========================================================
 
 {
     "id": "angle",
-    "label": "Angle",
+    "label": "Camera Angle",
 
     "fields": [
 
         {
             "id": "camera_angle",
-            "label": "Camera Angle",
+            "label": "Angle",
             "type": "combo",
             "values": [
 
@@ -97,7 +129,9 @@ SCHEMA = [
                 "high angle",
                 "low angle",
                 "worm's eye view",
-                "bird's eye view"
+                "bird's eye view",
+                "overhead",
+                "dutch angle"
 
             ]
         }
@@ -124,7 +158,10 @@ SCHEMA = [
                 "centered composition",
                 "rule of thirds",
                 "symmetrical composition",
-                "cinematic composition"
+                "cinematic composition",
+                "wide composition",
+                "close composition",
+                "negative space"
 
             ]
         }
@@ -171,15 +208,18 @@ SCHEMA = [
 
         {
             "id": "photo_style",
-            "label": "Photo Style",
+            "label": "Style",
             "type": "combo",
             "values": [
 
                 "photograph",
                 "portrait photography",
                 "fashion photography",
+                "beauty photography",
                 "editorial photography",
                 "studio photography",
+                "commercial photography",
+                "lifestyle photography",
                 "cinematic still"
 
             ]

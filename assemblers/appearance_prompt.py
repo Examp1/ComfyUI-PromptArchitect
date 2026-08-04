@@ -1,126 +1,63 @@
-class AppearancePrompt:
+from .prompt_module import PromptModule
+
+
+class AppearancePrompt(PromptModule):
 
     NAME = "appearance"
 
-    def build(self, data):
+    RULES = {
 
-        result = []
+        # -------------------------------------------------
+        # HAIR
+        # -------------------------------------------------
 
-        result += self.hair(data)
-        result += self.clothing(data)
-        result += self.accessories(data)
-        result += self.makeup(data)
-        result += self.nails(data)
-        result += self.body_details(data)
+        "hair.style":
+            "{value} hairstyle",
 
-        return result
+        # -------------------------------------------------
+        # CLOTHING
+        # -------------------------------------------------
 
-    # -------------------------------------------------
-    # HAIR
-    # -------------------------------------------------
+        "clothing.outfit":
+            "wearing {value}",
 
-    def hair(self, data):
+        # -------------------------------------------------
+        # ACCESSORIES
+        # -------------------------------------------------
 
-        result = []
+        "accessories.items":
+            "wearing {value}",
 
-        hair = data.get("hair", {})
+        # -------------------------------------------------
+        # MAKEUP
+        # -------------------------------------------------
 
-        style = hair.get("style")
+        "makeup.style": {
 
-        if style:
+            "none": None,
 
-            result.append(f"{style} hairstyle")
+            "light": "light makeup",
 
-        return result
+            "natural": "natural makeup",
 
-    # -------------------------------------------------
-    # CLOTHING
-    # -------------------------------------------------
+            "soft glam": "soft glam makeup",
 
-    def clothing(self, data):
+            "full glam": "full glam makeup",
 
-        result = []
+        },
 
-        clothing = data.get("clothing", {})
+        # -------------------------------------------------
+        # NAILS
+        # -------------------------------------------------
 
-        outfit = clothing.get("outfit")
+        "nails.style":
+            lambda value: f"{value.strip()} nail polish",
 
-        if outfit:
+        # -------------------------------------------------
+        # BODY DETAILS
+        # -------------------------------------------------
 
-            result.append(f"wearing {outfit}")
+        "body_details.details":
+            "{value}",
 
-        return result
-
-    # -------------------------------------------------
-    # ACCESSORIES
-    # -------------------------------------------------
-
-    def accessories(self, data):
-
-        result = []
-
-        accessories = data.get("accessories", {})
-
-        items = accessories.get("items")
-
-        if items:
-
-            result.append(f"wearing {items}")
-
-        return result
-
-    # -------------------------------------------------
-    # MAKEUP
-    # -------------------------------------------------
-
-    def makeup(self, data):
-
-        result = []
-
-        makeup = data.get("makeup", {})
-
-        style = makeup.get("style")
-
-        if style and style != "none":
-
-            result.append(f"{style} makeup")
-
-        return result
-
-    # -------------------------------------------------
-    # NAILS
-    # -------------------------------------------------
-
-    def nails(self, data):
-
-        result = []
-
-        nails = data.get("nails", {})
-
-        style = nails.get("style")
-
-        if style:
-
-            style = style.strip()
-
-            result.append(f"{style} nail polish")
-
-        return result
-
-    # -------------------------------------------------
-    # BODY DETAILS
-    # -------------------------------------------------
-
-    def body_details(self, data):
-
-        result = []
-
-        body = data.get("body_details", {})
-
-        details = body.get("details")
-
-        if details:
-
-            result.append(details)
-
-        return result
+    }

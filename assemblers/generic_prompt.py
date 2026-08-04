@@ -10,12 +10,11 @@ class GenericPrompt:
         sections = []
 
         order = [
-
             "character",
             "appearance",
+            "pose",
             "scene",
             "camera",
-
         ]
 
         for name in order:

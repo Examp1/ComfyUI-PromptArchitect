@@ -1,105 +1,87 @@
-class CameraPrompt:
+from .prompt_module import PromptModule
+
+
+class CameraPrompt(PromptModule):
 
     NAME = "camera"
 
-    def build(self, data):
+    RULES = {
 
-        result = []
+        # -------------------------------------------------
+        # STYLE
+        # -------------------------------------------------
 
-        result += self.style(data)
-        result += self.shot(data)
-        result += self.angle(data)
-        result += self.composition(data)
-        result += self.lens(data)
-        result += self.focus(data)
+        "style.photo_style": {
 
-        return result
+            "photograph": "photograph",
 
-    # -------------------------------------------------
-    # STYLE
-    # -------------------------------------------------
+            "portrait photography": "portrait photograph",
 
-    def style(self, data):
+            "fashion photography": "fashion editorial photograph",
 
-        result = []
+            "beauty photography": "beauty photograph",
 
-        style = data.get("style", {})
-
-        value = style.get("photo_style")
-
-        mapping = {
-
-            "photograph": "portrait photograph",
-
-            "portrait photography": "portrait photography",
-
-            "fashion photography": "fashion fashion editorial",
-
-            "editorial photography": "editorial fashion photography",
+            "editorial photography": "editorial fashion photograph",
 
             "studio photography": "professional studio photograph",
 
+            "commercial photography": "commercial photograph",
+
+            "lifestyle photography": "lifestyle photograph",
+
             "cinematic still": "cinematic still",
 
-        }
+        },
 
-        if value:
+        # -------------------------------------------------
+        # CAMERA DISTANCE
+        # -------------------------------------------------
 
-            result.append(mapping.get(value, value))
-
-        return result
-
-    # -------------------------------------------------
-    # SHOT
-    # -------------------------------------------------
-
-    def shot(self, data):
-
-        result = []
-
-        shot = data.get("shot", {})
-
-        framing = shot.get("framing")
-
-        mapping = {
+        "distance.shot": {
 
             "extreme close-up": "extreme close-up shot",
 
-            "close-up": "close-up portrait",
+            "close-up": "close-up shot",
 
-            "headshot": "headshot portrait",
+            "headshot": "headshot",
 
-            "portrait": "portrait",
+            "portrait": "portrait shot",
 
-            "upper body": "upper body shot",
+            "medium shot": "medium shot",
 
-            "half body": "half body shot",
+            "cowboy shot": "cowboy shot",
 
-            "three quarter body": "three-quarter body shot",
+            "three-quarter shot": "three-quarter shot",
 
-            "full body": "full body shot",
+            "full body shot": "full body shot",
 
-        }
+            "long shot": "long shot",
 
-        if framing:
+        },
 
-            result.append(mapping.get(framing, framing))
+        # -------------------------------------------------
+        # SUBJECT
+        # -------------------------------------------------
 
-        return result
+        "subject.position": {
 
-    # -------------------------------------------------
-    # ANGLE
-    # -------------------------------------------------
+            "centered": "subject centered",
 
-    def angle(self, data):
+            "close to camera": "subject close to camera",
 
-        result = []
+            "far from camera": "subject far from camera",
 
-        angle = data.get("angle", {})
+            "occupying most of the frame": "subject occupying most of the frame",
 
-        camera_angle = angle.get("camera_angle")
+            "small subject": "small subject in frame",
 
-        mapping = {
+        },
+
+        # -------------------------------------------------
+        # CAMERA ANGLE
+        # -------------------------------------------------
+
+        "angle.camera_angle": {
 
             "eye level": "eye-level camera angle",
 
@@ -113,70 +95,30 @@ class CameraPrompt:
 
             "worm's eye view": "worm's-eye view",
 
-        }
+            "overhead": "overhead shot",
 
-        if camera_angle:
+            "dutch angle": "dutch angle",
 
-            result.append(mapping.get(camera_angle, camera_angle))
+        },
 
-        return result
+        # -------------------------------------------------
+        # COMPOSITION
+        # -------------------------------------------------
 
-    # -------------------------------------------------
-    # COMPOSITION
-    # -------------------------------------------------
+        "composition.composition": "{value}",
 
-    def composition(self, data):
+        # -------------------------------------------------
+        # LENS
+        # -------------------------------------------------
 
-        result = []
+        "lens.focal_length": "shot on a {value} lens",
 
-        composition = data.get("composition", {})
+        "lens.aperture": "{value} aperture",
 
-        value = composition.get("composition")
+        # -------------------------------------------------
+        # FOCUS
+        # -------------------------------------------------
 
-        if value:
+        "focus.focus": "{value}",
 
-            result.append(value)
-
-        return result
-
-    # -------------------------------------------------
-    # LENS
-    # -------------------------------------------------
-
-    def lens(self, data):
-
-        result = []
-
-        lens = data.get("lens", {})
-
-        focal = lens.get("focal_length")
-
-        aperture = lens.get("aperture")
-
-        if focal:
-
-            result.append(f"shot on a {focal} lens")
-
-        if aperture:
-
-            result.append(f"{aperture} aperture")
-
-        return result
-
-    # -------------------------------------------------
-    # FOCUS
-    # -------------------------------------------------
-
-    def focus(self, data):
-
-        result = []
-
-        focus = data.get("focus", {})
-
-        value = focus.get("focus")
-
-        if value:
-
-            result.append(value)
-
-        return result
+    }

@@ -1,14 +1,21 @@
 SCHEMA = [
 
+# ==========================================================
+# LOCATION
+# ==========================================================
+
 {
     "id": "scene",
+    "label": "Scene",
 
     "fields": [
 
         {
             "id": "location",
+            "label": "Location",
             "type": "combo",
             "values": [
+
                 "studio",
                 "bedroom",
                 "living room",
@@ -24,75 +31,63 @@ SCHEMA = [
                 "mountains",
                 "balcony",
                 "hotel room"
+
             ]
         },
+
+# ==========================================================
+# LIGHTING
+# ==========================================================
 
         {
             "id": "lighting",
+            "label": "Lighting",
             "type": "combo",
             "values": [
+
                 "soft studio lighting",
-                "natural lighting",
-                "window lighting",
+                "hard studio lighting",
+
+                "window light",
+                "soft window light",
+
+                "natural daylight",
+
+                "morning sunlight",
+                "afternoon sunlight",
+
                 "golden hour lighting",
                 "sunset lighting",
                 "blue hour lighting",
-                "overcast lighting",
+
+                "overcast daylight",
+
                 "cinematic lighting",
                 "dramatic lighting",
-                "neon lighting"
+
+                "rim lighting",
+                "backlighting",
+
+                "warm ambient light",
+                "cold ambient light",
+
+                "neon lighting",
+
+                "candle light",
+                "fire light",
+
+                "moonlight"
+
             ]
         },
 
-        {
-            "id": "time",
-            "type": "combo",
-            "values": [
-                "morning",
-                "afternoon",
-                "golden hour",
-                "sunset",
-                "blue hour",
-                "night"
-            ]
-        },
+# ==========================================================
+# SCENE DETAILS
+# ==========================================================
 
         {
-            "id": "weather",
-            "type": "combo",
-            "values": [
-                "clear sky",
-                "cloudy",
-                "rainy",
-                "snowing",
-                "foggy",
-                "stormy"
-            ]
-        },
-
-        {
-            "id": "atmosphere",
-            "type": "combo",
-            "values": [
-                "cozy",
-                "romantic",
-                "luxury",
-                "minimalistic",
-                "casual",
-                "warm",
-                "cold",
-                "summer vibes",
-                "winter vibes"
-            ]
-        },
-
-        {
-            "id": "props",
-            "type": "multiline"
-        },
-
-        {
-            "id": "extra",
+            "id": "details",
+            "label": "Scene Details",
             "type": "multiline"
         }
 
