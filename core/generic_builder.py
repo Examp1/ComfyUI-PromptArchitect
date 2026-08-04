@@ -1,3 +1,6 @@
+import json
+
+
 class GenericBuilder:
 
     SCHEMA = []
@@ -16,14 +19,11 @@ class GenericBuilder:
 
         for group in cls.SCHEMA:
 
-            group_prefix = group["id"]
-
-            if group_prefix == "eyes":
-                group_prefix = "eye"
+          
 
             for field in group["fields"]:
 
-                widget_name = f"{group_prefix}_{field['id']}"
+                widget_name = f"{group['id']}_{field['id']}"
 
                 field_type = field["type"]
 
@@ -65,17 +65,12 @@ class GenericBuilder:
 
             group_id = group["id"]
 
-            group_prefix = group_id
-
-            if group_prefix == "eyes":
-                group_prefix = "eye"
-
             data[group_id] = {}
 
             for field in group["fields"]:
 
-                widget_name = f"{group_prefix}_{field['id']}"
+                widget_name = f"{group['id']}_{field['id']}"
 
-                data[group_id][field["id"]] = kwargs[widget_name]
+                data[group_id][field["id"]] = kwargs.get(widget_name)
 
-        return (str(data),)
+        return (json.dumps(data),)
