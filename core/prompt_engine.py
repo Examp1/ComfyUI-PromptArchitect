@@ -1,9 +1,9 @@
 import ast
 
-from . import ASSEMBLERS
+from ..assemblers import ASSEMBLERS
 
 
-class GenericPrompt:
+class PromptEngine:
 
     def assemble(self, **kwargs):
 

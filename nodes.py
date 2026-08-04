@@ -1,9 +1,9 @@
-from .character_builder import CharacterBuilder
-from .prompt_assembler import PromptAssembler
-from .scene_builder import SceneBuilder
-from .appearance_builder import AppearanceBuilder
-from .camera_builder import CameraBuilder
-from .pose_builder import PoseBuilder
+from .builders.character_builder import CharacterBuilder
+from .core.prompt_assembler import PromptAssembler
+from .builders.scene_builder import SceneBuilder
+from .builders.appearance_builder import AppearanceBuilder
+from .builders.camera_builder import CameraBuilder
+from .builders.pose_builder import PoseBuilder
 
 NODE_CLASS_MAPPINGS = {
 

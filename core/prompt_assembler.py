@@ -1,4 +1,4 @@
-from .assemblers.generic_prompt import GenericPrompt
+from .prompt_engine import PromptEngine
 
 
 class PromptAssembler:
@@ -37,7 +37,7 @@ class PromptAssembler:
         quality=None,
     ):
 
-        prompt = GenericPrompt().assemble(
+        prompt = PromptEngine().assemble(
             character=character,
             appearance=appearance,
             pose=pose,
