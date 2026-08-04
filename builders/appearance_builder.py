@@ -1,4 +1,4 @@
-from .generic_builder import GenericBuilder
+from ..core.generic_builder import GenericBuilder
 from ..schemas.appearance import SCHEMA
 
 

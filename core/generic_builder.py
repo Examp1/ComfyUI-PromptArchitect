@@ -18,7 +18,6 @@ class GenericBuilder:
 
             group_prefix = group["id"]
 
-            # чтобы было eye_color вместо eyes_color
             if group_prefix == "eyes":
                 group_prefix = "eye"
 
