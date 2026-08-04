@@ -1,29 +1,5 @@
 SCHEMA = [
 
-{
-    "id": "settings",
-    "label": "Settings",
-
-    "fields": [
-
-        {
-            "id": "mode",
-            "label": "Mode",
-            "type": "combo",
-            "values": [
-
-                "preset",
-                "custom"
-
-            ]
-        }
-
-    ]
-},
-
-# ==========================================
-# BODY
-# ==========================================
 
 {
     "id": "body",
@@ -36,7 +12,7 @@ SCHEMA = [
             "label": "Body Position",
             "type": "combo",
             "values": [
-
+                "none",
                 "standing",
                 "walking",
                 "running",
@@ -52,9 +28,6 @@ SCHEMA = [
     ]
 },
 
-# ==========================================
-# HEAD
-# ==========================================
 
 {
     "id": "head",
@@ -67,7 +40,7 @@ SCHEMA = [
             "label": "Head Position",
             "type": "combo",
             "values": [
-
+                "none",
                 "looking straight",
                 "looking down",
                 "looking up",
@@ -80,9 +53,7 @@ SCHEMA = [
     ]
 },
 
-# ==========================================
-# EYES
-# ==========================================
+
 
 {
     "id": "eyes",
@@ -95,7 +66,7 @@ SCHEMA = [
             "label": "Eye Direction",
             "type": "combo",
             "values": [
-
+                "none",
                 "looking at camera",
                 "looking at viewer",
                 "looking away",
@@ -107,9 +78,7 @@ SCHEMA = [
     ]
 },
 
-# ==========================================
-# EXPRESSION
-# ==========================================
+
 
 {
     "id": "expression",
@@ -122,7 +91,7 @@ SCHEMA = [
             "label": "Expression",
             "type": "combo",
             "values": [
-
+                "none",
                 "neutral expression",
                 "soft smile",
                 "big smile",
@@ -137,9 +106,7 @@ SCHEMA = [
     ]
 },
 
-# ==========================================
-# ARMS
-# ==========================================
+
 
 {
     "id": "arms",
@@ -152,7 +119,7 @@ SCHEMA = [
             "label": "Arm Position",
             "type": "combo",
             "values": [
-
+                "none",
                 "arms at sides",
                 "hands behind back",
                 "arms crossed",
@@ -167,9 +134,6 @@ SCHEMA = [
     ]
 },
 
-# ==========================================
-# LEGS
-# ==========================================
 
 {
     "id": "legs",
@@ -182,7 +146,7 @@ SCHEMA = [
             "label": "Leg Position",
             "type": "combo",
             "values": [
-
+                "none",
                 "legs together",
                 "crossed legs",
                 "one leg forward",
@@ -194,9 +158,6 @@ SCHEMA = [
     ]
 },
 
-# ==========================================
-# INTERACTION
-# ==========================================
 
 {
     "id": "interaction",
@@ -213,10 +174,6 @@ SCHEMA = [
     ]
 },
 
-# ==========================================
-# EXTRA
-# ==========================================
-
 {
     "id": "extra",
     "label": "Extra",
@@ -232,9 +189,6 @@ SCHEMA = [
     ]
 },
 
-# ==========================================
-# CUSTOM
-# ==========================================
 
 {
     "id": "custom",

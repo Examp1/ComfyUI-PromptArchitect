@@ -1,4 +1,4 @@
-import ast
+import json
 
 from ..assemblers import ASSEMBLERS
 
@@ -30,12 +30,16 @@ class PromptEngine:
                 continue
 
             if isinstance(data, str):
-                data = ast.literal_eval(data)
+                data = json.loads(data)
 
             block = assembler.build(data)
 
             if block:
-
                 sections.append(",\n".join(block))
+
+        quality = kwargs.get("quality")
+
+        if quality:
+            sections.append(quality.strip())
 
         return "\n\n".join(sections)
